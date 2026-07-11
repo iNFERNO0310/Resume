@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Weather Visualization</title>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #chartContainer {
+            width: 85%;
+            margin: auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Real-Time Weather Data Visualization</h2>
+
+    <button onclick="loadWeatherData()">
+        Load Weather Data
+    </button>
+
+    <div id="chartContainer">
+        <canvas id="weatherChart"></canvas>
+    </div>
+
+    <script>
+
+        let chart;
+
+        async function loadWeatherData() {
+
+            const apiUrl =
+                "https://api.open-meteo.com/v1/forecast?latitude=19.0760&longitude=72.8777&hourly=temperature_2m,relative_humidity_2m&forecast_days=2";
+
+            try {
+
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                // First 12 hours of data
+                const times = data.hourly.time.slice(0, 12);
+                const temperatures =
+                    data.hourly.temperature_2m.slice(0, 12);
+                const humidity =
+                    data.hourly.relative_humidity_2m.slice(0, 12);
+
+                const labels = times.map(time =>
+                    time.split("T")[1]
+                );
+
+                const ctx = document
+                    .getElementById("weatherChart")
+                    .getContext("2d");
+
+                // Destroy previous chart
+                if (chart) {
+                    chart.destroy();
+                }
+
+                chart = new Chart(ctx, {
+
+                    type: "bar",
+
+                    data: {
+                        labels: labels,
+
+                        datasets: [
+                            {
+                                label: "Temperature (°C)",
+                                data: temperatures,
+                                backgroundColor:
+                                    "rgba(54, 162, 235, 0.7)",
+                                borderColor:
+                                    "rgba(54, 162, 235, 1)",
+                                borderWidth: 1
+                            },
+                            {
+                                label: "Humidity (%)",
+                                data: humidity,
+                                backgroundColor:
+                                    "rgba(255, 99, 132, 0.7)",
+                                borderColor:
+                                    "rgba(255, 99, 132, 1)",
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+
+                    options: {
+                        responsive: true,
+
+                        plugins: {
+                            title: {
+                                display: true,
+                                text:
+                                    "Mumbai Temperature and Humidity Forecast"
+                            }
+                        },
+
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Time"
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: "Value"
+                                }
+                            }
+                        }
+                    }
+                });
+
+            }
+            catch (error) {
+                console.error(error);
+                alert("Unable to fetch weather data.");
+            }
+        }
+
+    </script>
+
+</body>
+</html>
