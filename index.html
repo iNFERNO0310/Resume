@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Web Resume</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f4f4f4;
+        color: #333;
+        transition: 0.4s;
+    }
+
+    /* Navigation */
+    nav {
+        background: #2c3e50;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        position: sticky;
+        top: 0;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav ul li a:hover {
+        color: #f1c40f;
+    }
+
+    .btn {
+        background: #f1c40f;
+        border: none;
+        padding: 8px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    /* Sections */
+    section {
+        padding: 60px 10%;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    /* Profile Section */
+    .profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .profile img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 5px solid #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    .profile-content {
+        margin-left: 30px;
+    }
+
+    .profile-content h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px lightgray;
+    }
+
+    ul {
+        margin-left: 20px;
+    }
+
+    /* Footer */
+    footer {
+        background: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+        background-color: #1e1e1e;
+        color: white;
+    }
+
+    .dark-mode .card {
+        background: #333;
+        color: white;
+    }
+
+    .dark-mode h2 {
+        color: #f1c40f;
+    }
+
+    .dark-mode nav,
+    .dark-mode footer {
+        background: black;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+        }
+
+        nav ul {
+            flex-direction: column;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        .profile {
+            flex-direction: column;
+        }
+
+        .profile-content {
+            margin-left: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <h2>My Resume</h2>
+
+    <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#objective">Objective</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="btn" onclick="toggleDarkMode()">
+        Dark Mode
+    </button>
+</nav>
+
+<!-- Profile -->
+<section id="profile">
+    <div class="profile">
+        <img src="https://via.placeholder.com/180" alt="Profile Photo">
+
+        <div class="profile-content">
+            <h1>Kunal Yadav</h1>
+            <h3>Computer Engineering Student</h3>
+            <p>Passionate about Web Development and Programming.</p>
+
+            <br>
+
+            <button class="btn" onclick="window.print()">
+                Download Resume
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Career Objective -->
+<section id="objective">
+    <div class="card">
+        <h2>Career Objective</h2>
+
+        <p>
+            To obtain a challenging position in the field of software
+            development where I can apply my technical knowledge,
+            improve my skills, and contribute to organizational growth.
+        </p>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <div class="card">
+        <h2>Educational Qualifications</h2>
+
+        <ul>
+            <li>B.Tech in Computer Engineering - SAKEC College - Pursuing</li>
+            <li>HSC - AECS4 College - 93%</li>
+            <li>SSC - DEF School - 91%</li>
+        </ul>
+    </div>
+</section>
+
+
+<section id="skills">
+    <div class="card">
+        <h2>Technical Skills</h2>
+
+        <ul>
+            <li>C Programming</li>
+            <li>C++</li>
+            <li>Java</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Bootstrap 5</li>
+            <li>MySQL</li>
+        </ul>
+    </div>
+</section>
+
+
+<section id="projects">
+    <div class="card">
+        <h2>Projects</h2>
+
+        <ul>
+            <li>College Website using HTML, CSS and Bootstrap</li>
+            <li>Student Marks Visualization using Chart.js</li>
+            <li>Weather Dashboard using JavaScript API</li>
+        </ul>
+    </div>
+</section>
+
+
+<section id="certifications">
+    <div class="card">
+        <h2>Certifications</h2>
+
+        <ul>
+            <li>Web Development Certification</li>
+            <li>Java Programming Certification</li>
+            <li>Python Programming Certification</li>
+        </ul>
+    </div>
+</section>
+
+
+<section id="achievements">
+    <div class="card">
+        <h2>Achievements</h2>
+
+        <ul>
+            <li>Completed multiple web development projects.</li>
+            <li>Participated in coding competitions.</li>
+            <li>Secured good academic performance.</li>
+        </ul>
+    </div>
+</section>
+
+
+<section id="contact">
+    <div class="card">
+        <h2>Contact Information</h2>
+
+        <p><strong>Email:</strong> kunal.yadav25@sakec.ac.in.com</p>
+        <p><strong>Phone:</strong> +91 7506658630</p>
+        <p><strong>Location:</strong> Mumbai, Maharashtra, India</p>
+        <p><strong>GitHub:</strong> github.com/iNFERNO0310</p>
+    </div>
+</section>
+
+
+<footer>
+    <p>© 2026 Kunal Yadav | Web Resume Project</p>
+</footer>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+
+   
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href'))
+            .scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
